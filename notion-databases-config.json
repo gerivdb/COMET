@@ -1,0 +1,297 @@
+{
+  "ecosystem_monitor": {
+    "name": "Ecosystem Monitor gerivdb",
+    "properties": {
+      "Repo_Name": {
+        "type": "title",
+        "title": {}
+      },
+      "Category": {
+        "type": "select",
+        "select": {
+          "options": [
+            {
+              "name": "DevTools",
+              "color": "blue"
+            },
+            {
+              "name": "FLUENCE",
+              "color": "purple"
+            },
+            {
+              "name": "ECOYSTEM",
+              "color": "green"
+            },
+            {
+              "name": "IA/Research",
+              "color": "orange"
+            },
+            {
+              "name": "Business/Metier",
+              "color": "red"
+            },
+            {
+              "name": "Communication",
+              "color": "yellow"
+            },
+            {
+              "name": "Automation",
+              "color": "pink"
+            },
+            {
+              "name": "CMS/Lovable",
+              "color": "gray"
+            }
+          ]
+        }
+      },
+      "Language": {
+        "type": "multi_select",
+        "multi_select": {
+          "options": [
+            {
+              "name": "PowerShell",
+              "color": "blue"
+            },
+            {
+              "name": "Python",
+              "color": "green"
+            },
+            {
+              "name": "Go",
+              "color": "purple"
+            },
+            {
+              "name": "TypeScript",
+              "color": "orange"
+            },
+            {
+              "name": "HTML",
+              "color": "red"
+            }
+          ]
+        }
+      },
+      "Status": {
+        "type": "select",
+        "select": {
+          "options": [
+            {
+              "name": "Active",
+              "color": "green"
+            },
+            {
+              "name": "Maintenance",
+              "color": "yellow"
+            },
+            {
+              "name": "Archive",
+              "color": "red"
+            },
+            {
+              "name": "New",
+              "color": "purple"
+            }
+          ]
+        }
+      },
+      "Issues_Count": {
+        "type": "number",
+        "number": {
+          "format": "number"
+        }
+      },
+      "Size_KB": {
+        "type": "number",
+        "number": {
+          "format": "number"
+        }
+      },
+      "Last_Update": {
+        "type": "date",
+        "date": {}
+      },
+      "Repo_URL": {
+        "type": "url",
+        "url": {}
+      },
+      "Description": {
+        "type": "rich_text",
+        "rich_text": {}
+      },
+      "Priority": {
+        "type": "select",
+        "select": {
+          "options": [
+            {
+              "name": "Critical",
+              "color": "red"
+            },
+            {
+              "name": "High",
+              "color": "orange"
+            },
+            {
+              "name": "Medium",
+              "color": "yellow"
+            },
+            {
+              "name": "Low",
+              "color": "gray"
+            }
+          ]
+        }
+      },
+      "Integration_Type": {
+        "type": "multi_select",
+        "multi_select": {
+          "options": [
+            {
+              "name": "GitHub_MCP",
+              "color": "blue"
+            },
+            {
+              "name": "Comet_Browser",
+              "color": "green"
+            },
+            {
+              "name": "Perplexity_Research",
+              "color": "purple"
+            },
+            {
+              "name": "Manual_Only",
+              "color": "gray"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "workflow_automation": {
+    "name": "DEV COMET Workflows",
+    "properties": {
+      "Workflow_Name": {
+        "type": "title",
+        "title": {}
+      },
+      "Type": {
+        "type": "select",
+        "select": {
+          "options": [
+            {
+              "name": "GitHub_Sync",
+              "color": "blue"
+            },
+            {
+              "name": "Research_Auto",
+              "color": "purple"
+            },
+            {
+              "name": "Monitor_Issues",
+              "color": "red"
+            },
+            {
+              "name": "Cross_Repo",
+              "color": "orange"
+            },
+            {
+              "name": "Documentation",
+              "color": "green"
+            }
+          ]
+        }
+      },
+      "Target_Repos": {
+        "type": "multi_select",
+        "multi_select": {
+          "options": [
+            {
+              "name": "DevTools",
+              "color": "blue"
+            },
+            {
+              "name": "FLUENCE",
+              "color": "purple"
+            },
+            {
+              "name": "ECOYSTEM",
+              "color": "green"
+            },
+            {
+              "name": "BRAIN",
+              "color": "orange"
+            },
+            {
+              "name": "All_Non_CMS",
+              "color": "gray"
+            }
+          ]
+        }
+      },
+      "Schedule": {
+        "type": "select",
+        "select": {
+          "options": [
+            {
+              "name": "Hourly",
+              "color": "red"
+            },
+            {
+              "name": "Daily",
+              "color": "orange"
+            },
+            {
+              "name": "Weekly",
+              "color": "yellow"
+            },
+            {
+              "name": "Manual",
+              "color": "gray"
+            }
+          ]
+        }
+      },
+      "Status": {
+        "type": "select",
+        "select": {
+          "options": [
+            {
+              "name": "Running",
+              "color": "green"
+            },
+            {
+              "name": "Paused",
+              "color": "yellow"
+            },
+            {
+              "name": "Error",
+              "color": "red"
+            },
+            {
+              "name": "Planned",
+              "color": "blue"
+            }
+          ]
+        }
+      },
+      "Last_Run": {
+        "type": "date",
+        "date": {}
+      },
+      "Success_Rate": {
+        "type": "number",
+        "number": {
+          "format": "percent"
+        }
+      },
+      "Script_URL": {
+        "type": "url",
+        "url": {}
+      },
+      "Notes": {
+        "type": "rich_text",
+        "rich_text": {}
+      }
+    }
+  }
+}

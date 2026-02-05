@@ -1,0 +1,107 @@
+dev_comet_workflows:
+  automation:
+    backup_frequency: daily
+    error_handling: log_and_continue
+    notification_channels:
+    - notion
+    - github_issues
+    retry_policy: exponential_backoff
+  ecosystem:
+    excluded_patterns:
+    - geri-cms-*
+    - '*cms*'
+    monitored_repos:
+    - issues_open: 8
+      language: PowerShell
+      monitor_frequency: 4h
+      name: DevTools
+      priority: critical
+    - description: Cognitive orchestrator
+      language: Go
+      monitor_frequency: 2h
+      name: FLUENCE
+      priority: critical
+    - issues_open: 1
+      language: PowerShell
+      monitor_frequency: 4h
+      name: ECOYSTEM
+      priority: high
+    name: gerivdb
+    total_repos: 109
+  integrations:
+    comet_browser:
+      extraction_selectors:
+        commits: .commit-message
+        issues: .js-issue-row
+        readme: article.markdown-body
+      navigation_targets:
+      - github.com/{owner}/{repo}
+      - github.com/{owner}/{repo}/issues
+      - github.com/{owner}/{repo}/commits
+    github_mcp:
+      endpoints:
+      - list_issues
+      - get_repository
+      - list_commits
+      - search_repositories
+      rate_limits:
+        concurrent_max: 10
+        requests_per_hour: 5000
+    notion_databases:
+      ecosystem_monitor:
+        properties:
+        - Repo_Name
+        - Category
+        - Language
+        - Status
+        - Issues_Count
+        - Priority
+      workflow_automation:
+        properties:
+        - Workflow_Name
+        - Type
+        - Target_Repos
+        - Schedule
+        - Status
+        - Last_Run
+    perplexity_ai:
+      models:
+      - sonar-pro
+      - sonar
+      query_templates:
+      - Latest {language} automation trends
+      - '{repo_name} GitHub analysis and insights'
+      - Best practices {language} DevOps workflows
+  updated: '2025-10-25T15:35:59.339529'
+  version: '1.0'
+  workflows:
+  - actions:
+    - github_mcp.list_issues
+    - perplexity.analyze_trends
+    - notion.update_monitor
+    filters:
+      exclude:
+      - geri-cms-*
+    name: monitor_critical_repos
+    schedule: 0 */4 * * *
+    targets:
+    - DevTools
+    - FLUENCE
+    - ECOYSTEM
+  - actions:
+    - perplexity.technology_research
+    - comet.extract_repo_insights
+    - notion.sync_findings
+    name: ecosystem_research
+    schedule: 0 9 * * 1
+    targets:
+    - All_Non_CMS
+  - actions:
+    - github_mcp.search_cross_references
+    - perplexity.analyze_dependencies
+    - notion.update_relationships
+    name: cross_repo_analysis
+    schedule: manual
+    targets:
+    - DevTools
+    - FLUENCE

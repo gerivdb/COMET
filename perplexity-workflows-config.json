@@ -1,0 +1,24 @@
+{
+  "ecosystem_research": {
+    "queries": [
+      "Latest developments in {language} automation tools",
+      "{repo_name} GitHub repository analysis and insights",
+      "Best practices for {language} DevOps workflows",
+      "Competitive analysis for {category} tools"
+    ],
+    "models": {
+      "primary": "sonar-pro",
+      "fallback": "sonar"
+    },
+    "output_format": "structured_with_citations"
+  },
+  "code_analysis": {
+    "queries": [
+      "Code quality analysis for {repo_url}",
+      "Security review recommendations for {language} project",
+      "Performance optimization suggestions for {repo_name}"
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.3
+  }
+}

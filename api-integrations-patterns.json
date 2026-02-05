@@ -1,0 +1,275 @@
+{
+  "dev_comet_api_integrations": {
+    "version": "2.0",
+    "updated": "2025-10-25T17:38:00Z",
+    "description": "API Integration patterns et helpers pour écosystème GitHub gerivdb",
+    
+    "github_mcp_patterns": {
+      "authentication": {
+        "method": "github_mcp_tools",
+        "permissions": ["repos", "issues", "pull_requests", "contents"],
+        "rate_limiting": {
+          "requests_per_hour": 5000,
+          "concurrent_limit": 10,
+          "retry_strategy": "exponential_backoff"
+        }
+      },
+      
+      "repo_filtering": {
+        "include_patterns": [
+          "gerivdb/DevTools",
+          "gerivdb/FLUENCE", 
+          "gerivdb/ECOYSTEM",
+          "gerivdb/BRAIN",
+          "gerivdb/email-sender-*"
+        ],
+        "exclude_patterns": [
+          "gerivdb/geri-cms-*",
+          "*/cms*",
+          "*lovable*"
+        ],
+        "priority_repos": {
+          "critical": ["DevTools", "FLUENCE"],
+          "high": ["ECOYSTEM", "BRAIN"],
+          "medium": ["email-sender-1", "CANDIDATOR"],
+          "low": ["racines", "GERIBOOKING"]
+        }
+      },
+      
+      "monitoring_queries": {
+        "issues_critical": {
+          "endpoint": "list_issues",
+          "params": {
+            "state": "open",
+            "labels": "critical,urgent,blocker",
+            "sort": "created",
+            "direction": "desc"
+          }
+        },
+        "commits_recent": {
+          "endpoint": "list_commits", 
+          "params": {
+            "since": "7d",
+            "per_page": 20,
+            "author": "gerivdb"
+          }
+        },
+        "pull_requests_active": {
+          "endpoint": "list_pull_requests",
+          "params": {
+            "state": "open",
+            "sort": "updated",
+            "direction": "desc"
+          }
+        }
+      }
+    },
+    
+    "perplexity_research_templates": {
+      "models": {
+        "primary": "sonar-pro",
+        "fallback": "sonar",
+        "reasoning": "sonar-reasoning"
+      },
+      
+      "query_templates": {
+        "ecosystem_analysis": "Analyze GitHub ecosystem {repo_name} ({language}) - latest trends, best practices, security updates, performance optimization for {category} tools in 2025",
+        
+        "technology_research": "Latest developments in {language} for {use_case} - frameworks, libraries, DevOps integration, automation patterns, industry adoption",
+        
+        "competitive_analysis": "Compare {repo_name} with leading {category} tools - features, performance, architecture, market position, differentiation strategies",
+        
+        "security_audit": "Security best practices for {language} {category} projects - vulnerability scanning, dependency management, secure coding patterns, compliance",
+        
+        "architecture_review": "Architecture analysis for {repo_description} - scalability, maintainability, integration patterns, modernization recommendations"
+      },
+      
+      "context_enhancers": {
+        "repo_context": [
+          "Repository: {repo_url}",
+          "Language: {primary_language}",
+          "Category: {repo_category}", 
+          "Issues: {open_issues} open",
+          "Last update: {last_push}"
+        ],
+        "ecosystem_context": [
+          "Part of gerivdb ecosystem ({total_repos} repositories)",
+          "Integrates with: {related_repos}",
+          "Architecture: {architecture_type}",
+          "Priority: {priority_level}"
+        ]
+      }
+    },
+    
+    "notion_database_operations": {
+      "ecosystem_monitor": {
+        "database_id": "ECOSYSTEM_MONITOR_DB_ID",
+        "operations": {
+          "create_repo_entry": {
+            "properties": {
+              "Repo_Name": {"type": "title", "value": "{repo_name}"},
+              "Category": {"type": "select", "value": "{repo_category}"},
+              "Language": {"type": "multi_select", "value": ["{primary_language}"]},
+              "Status": {"type": "select", "value": "{repo_status}"},
+              "Issues_Count": {"type": "number", "value": "{open_issues}"},
+              "Priority": {"type": "select", "value": "{priority_level}"},
+              "Last_Update": {"type": "date", "value": "{last_push_date}"},
+              "Repo_URL": {"type": "url", "value": "{repo_url}"},
+              "Description": {"type": "rich_text", "value": "{repo_description}"}
+            }
+          },
+          "update_metrics": {
+            "properties": {
+              "Issues_Count": "{current_issues}",
+              "Last_Check": "{check_timestamp}",
+              "Status": "{computed_status}",
+              "Integration_Type": ["{integration_methods}"]
+            }
+          }
+        }
+      },
+      
+      "workflow_automation": {
+        "database_id": "WORKFLOW_AUTOMATION_DB_ID",
+        "operations": {
+          "log_execution": {
+            "properties": {
+              "Workflow_Name": {"type": "title", "value": "{workflow_id}"},
+              "Type": {"type": "select", "value": "{workflow_type}"},
+              "Target_Repos": {"type": "multi_select", "value": ["{target_repos}"]},
+              "Status": {"type": "select", "value": "{execution_status}"},
+              "Last_Run": {"type": "date", "value": "{execution_timestamp}"},
+              "Success_Rate": {"type": "number", "value": "{success_percentage}"},
+              "Notes": {"type": "rich_text", "value": "{execution_notes}"}
+            }
+          }
+        }
+      }
+    },
+    
+    "comet_browser_automation": {
+      "navigation_patterns": {
+        "repo_overview": [
+          "Navigate to {repo_url}",
+          "Extract repository description",
+          "Count open issues from issues tab", 
+          "Read README content",
+          "Capture language statistics"
+        ],
+        "issue_analysis": [
+          "Navigate to {repo_url}/issues",
+          "Filter by labels: critical, urgent",
+          "Extract issue titles and descriptions",
+          "Collect creation dates and assignees",
+          "Identify patterns and recurring themes"
+        ],
+        "commit_monitoring": [
+          "Navigate to {repo_url}/commits",
+          "Extract recent commit messages",
+          "Identify commit frequency patterns",
+          "Analyze code change scope",
+          "Monitor contributor activity"
+        ]
+      },
+      
+      "extraction_selectors": {
+        "repo_description": "[data-pjax='#repo-content-pjax-container'] p",
+        "issue_count": ".js-issue-row",
+        "readme_content": "article.markdown-body",
+        "commit_messages": ".commit-message",
+        "language_stats": ".BorderGrid-cell .Progress",
+        "contributor_list": ".js-repo-contributors .avatar"
+      },
+      
+      "automation_schedules": {
+        "critical_monitoring": {
+          "frequency": "*/4 * * * *",
+          "targets": ["DevTools", "FLUENCE", "ECOYSTEM"],
+          "actions": ["issue_analysis", "commit_monitoring"]
+        },
+        "weekly_overview": {
+          "frequency": "0 9 * * 1", 
+          "targets": "all_non_cms",
+          "actions": ["repo_overview", "language_analysis"]
+        }
+      }
+    },
+    
+    "integration_workflows": {
+      "cross_platform_sync": {
+        "description": "Synchronisation GitHub → Perplexity → Notion",
+        "steps": [
+          {
+            "step": 1,
+            "action": "github_mcp.fetch_repo_data",
+            "params": {"repos": ["DevTools", "FLUENCE", "ECOYSTEM"]},
+            "output": "repo_metrics"
+          },
+          {
+            "step": 2,
+            "action": "perplexity.research_context",
+            "input": "repo_metrics",
+            "output": "research_insights"
+          },
+          {
+            "step": 3,
+            "action": "notion.update_databases",
+            "input": ["repo_metrics", "research_insights"],
+            "output": "sync_confirmation"
+          }
+        ]
+      },
+      
+      "automated_monitoring": {
+        "description": "Surveillance automatisée avec alertes",
+        "triggers": [
+          "new_critical_issue",
+          "repo_status_change", 
+          "security_vulnerability",
+          "performance_degradation"
+        ],
+        "actions": [
+          "perplexity_research_immediate",
+          "notion_priority_update",
+          "comet_deep_analysis"
+        ]
+      }
+    },
+    
+    "error_handling": {
+      "github_rate_limit": {
+        "detection": "rate_limit_exceeded",
+        "fallback": "comet_browser_extraction",
+        "retry_after": "3600"
+      },
+      "perplexity_timeout": {
+        "detection": "request_timeout", 
+        "fallback": "cached_results",
+        "retry_strategy": "exponential_backoff"
+      },
+      "notion_api_error": {
+        "detection": "api_error_response",
+        "fallback": "local_logging",
+        "recovery": "batch_sync_later"
+      }
+    },
+    
+    "optimization_strategies": {
+      "batch_operations": {
+        "github_queries": "group_by_repo_owner",
+        "perplexity_research": "combine_related_queries", 
+        "notion_updates": "batch_database_operations"
+      },
+      "caching": {
+        "repo_metadata": "24h_ttl",
+        "research_results": "7d_ttl",
+        "notion_schemas": "persistent_cache"
+      },
+      "parallelization": {
+        "concurrent_repos": 5,
+        "max_perplexity_parallel": 3,
+        "notion_batch_size": 10
+      }
+    }
+  }
+}

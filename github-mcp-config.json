@@ -1,0 +1,66 @@
+{
+  "primary_repos": [
+    {
+      "name": "DevTools",
+      "owner": "gerivdb",
+      "repo": "DevTools",
+      "language": "PowerShell",
+      "priority": "Critical",
+      "monitor_issues": true,
+      "monitor_commits": true,
+      "auto_sync_notion": true
+    },
+    {
+      "name": "FLUENCE",
+      "owner": "gerivdb",
+      "repo": "FLUENCE",
+      "language": "Go",
+      "priority": "Critical",
+      "monitor_issues": true,
+      "monitor_commits": true,
+      "auto_sync_notion": true
+    },
+    {
+      "name": "ECOYSTEM",
+      "owner": "gerivdb",
+      "repo": "ECOYSTEM",
+      "language": "PowerShell",
+      "priority": "High",
+      "monitor_issues": true,
+      "monitor_commits": true,
+      "auto_sync_notion": true
+    },
+    {
+      "name": "BRAIN",
+      "owner": "gerivdb",
+      "repo": "BRAIN",
+      "language": "Python",
+      "priority": "High",
+      "monitor_issues": false,
+      "monitor_commits": true,
+      "auto_sync_notion": true
+    },
+    {
+      "name": "email-sender-1",
+      "owner": "gerivdb",
+      "repo": "email-sender-1",
+      "language": "PowerShell",
+      "priority": "Medium",
+      "monitor_issues": true,
+      "monitor_commits": false,
+      "auto_sync_notion": false
+    }
+  ],
+  "exclusions": {
+    "patterns": [
+      "geri-cms-*",
+      "*cms*"
+    ],
+    "reason": "Lovable CMS projects - exclude from generic workflows"
+  },
+  "api_limits": {
+    "requests_per_hour": 5000,
+    "concurrent_requests": 10,
+    "retry_policy": "exponential_backoff"
+  }
+}

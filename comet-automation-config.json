@@ -1,0 +1,47 @@
+{
+  "navigation_patterns": {
+    "repo_analysis": {
+      "urls": [
+        "https://github.com/{owner}/{repo}",
+        "https://github.com/{owner}/{repo}/issues",
+        "https://github.com/{owner}/{repo}/pulls",
+        "https://github.com/{owner}/{repo}/commits",
+        "https://github.com/{owner}/{repo}/releases"
+      ],
+      "extract_selectors": {
+        "readme_content": "article.markdown-body",
+        "issues_list": ".js-issue-row",
+        "commit_messages": ".commit-message",
+        "repo_description": "[data-pjax='#repo-content-pjax-container'] p",
+        "language_stats": ".BorderGrid-cell .Progress"
+      }
+    },
+    "automation_scripts": {
+      "weekly_repo_scan": {
+        "schedule": "0 9 * * 1",
+        "targets": [
+          "DevTools",
+          "FLUENCE",
+          "ECOYSTEM"
+        ],
+        "actions": [
+          "extract_readme",
+          "count_issues",
+          "latest_commits"
+        ]
+      },
+      "issue_monitoring": {
+        "schedule": "0 */4 * * *",
+        "targets": [
+          "DevTools",
+          "ECOYSTEM"
+        ],
+        "actions": [
+          "new_issues",
+          "issue_updates",
+          "priority_classification"
+        ]
+      }
+    }
+  }
+}

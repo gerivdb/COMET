@@ -1,0 +1,64 @@
+[
+  {
+    "score": 80,
+    "grade": "B",
+    "metrics": {
+      "total_files": 11,
+      "total_dirs": 0,
+      "max_files_per_dir": 11,
+      "overloaded_dirs": 0,
+      "max_depth": 0,
+      "test_coverage": 0.0,
+      "test_failures": 0,
+      "has_readme": false,
+      "has_docs": false,
+      "doc_coverage": 0.0,
+      "total_dependencies": 0,
+      "vulnerabilities": 0,
+      "obsolete_deps": 0,
+      "avg_complexity": 0.0,
+      "duplications": 0,
+      "config_issues": 0
+    },
+    "issues": [
+      "README.md manquant",
+      "Documentation manquante"
+    ],
+    "recommendations": [
+      "Cr\u00e9er un README.md",
+      "Cr\u00e9er dossier docs/ avec documentation"
+    ],
+    "timestamp": "2025-11-23T14:36:04.195383"
+  },
+  {
+    "score": 80,
+    "grade": "B",
+    "metrics": {
+      "total_files": 12,
+      "total_dirs": 0,
+      "max_files_per_dir": 12,
+      "overloaded_dirs": 0,
+      "max_depth": 0,
+      "test_coverage": 0.0,
+      "test_failures": 0,
+      "has_readme": false,
+      "has_docs": false,
+      "doc_coverage": 0.0,
+      "total_dependencies": 0,
+      "vulnerabilities": 0,
+      "obsolete_deps": 0,
+      "avg_complexity": 0.0,
+      "duplications": 0,
+      "config_issues": 0
+    },
+    "issues": [
+      "README.md manquant",
+      "Documentation manquante"
+    ],
+    "recommendations": [
+      "Cr\u00e9er un README.md",
+      "Cr\u00e9er dossier docs/ avec documentation"
+    ],
+    "timestamp": "2025-11-23T14:37:01.684952"
+  }
+]
