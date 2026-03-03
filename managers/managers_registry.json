@@ -1,0 +1,62 @@
+{
+  "registry_version": "1.0.0",
+  "repo": "COMET",
+  "last_updated": "2026-03-03T03:08:00Z",
+  "managers": [
+    {
+      "manager_id": "daemon_manager",
+      "name": "DaemonManager",
+      "type": "daemon_orchestration",
+      "entry_point": "managers/daemon_manager.py",
+      "confidence": 0.95,
+      "description": "Manages background browser automation tasks",
+      "daemons": [
+        {
+          "daemon_id": "tab_monitor",
+          "name": "TabMonitorDaemon",
+          "interval": 30,
+          "description": "Monitor browser tabs lifecycle"
+        },
+        {
+          "daemon_id": "page_refresher",
+          "name": "PageRefresherDaemon",
+          "interval": 60,
+          "description": "Auto-refresh stale pages"
+        }
+      ]
+    },
+    {
+      "manager_id": "skill_manager",
+      "name": "SkillManager",
+      "type": "skill_orchestration",
+      "entry_point": "managers/skill_manager.py",
+      "confidence": 0.95,
+      "description": "Orchestrates browser automation skills",
+      "features": [
+        "skill_execution",
+        "skill_registry",
+        "skill_validation"
+      ]
+    },
+    {
+      "manager_id": "session_manager",
+      "name": "SessionManager",
+      "type": "session_management",
+      "entry_point": "managers/session_manager.py",
+      "confidence": 0.95,
+      "description": "Manages browser sessions and contexts",
+      "features": [
+        "session_creation",
+        "session_persistence",
+        "tab_management",
+        "cookie_storage"
+      ]
+    }
+  ],
+  "dependencies": {
+    "internal": ["DevTools"],
+    "external": ["playwright", "selenium"]
+  },
+  "total_managers": 3,
+  "total_daemons": 2
+}
